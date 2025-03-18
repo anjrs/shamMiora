@@ -34,7 +34,7 @@ if (!$auteur) {
     <h2>Articles de cet auteur</h2>
     <div class="articles">
         <?php
-        $stmt = $pdo->prepare("SELECT id, titre FROM article WHERE auteur = ? ORDER BY date DESC");
+        $stmt = $pdo->prepare("SELECT id, titre FROM article WHERE auteur_id = ? ORDER BY date DESC");
         $stmt->execute([$id]);
         while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<div class='article'>";

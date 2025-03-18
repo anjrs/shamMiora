@@ -28,15 +28,28 @@ if (!$articles) {
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2J62WV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <?php foreach ($articles as $article): ?>
-        <article>
-            <h1><?= htmlspecialchars($article['titre']) ?></h1>
-            <h3><?= htmlspecialchars($article['sous_titre']) ?></h3>
-            <p><strong>Par :</strong> <?= htmlspecialchars($article['auteur']) ?> - <em><?= htmlspecialchars($article['date']) ?></em></p>
-            <img src="<?= htmlspecialchars($article['photo']) ?>" alt="Photo">
-            <p><?= nl2br(htmlspecialchars($article['corps'])) ?></p>
-            <hr>
-        </article>
-    <?php endforeach; ?>
+      <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="articles.php">Tous les articles</a></li>
+                <li><a href="auteurs.php">Auteurs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="articles-container">
+        <?php foreach ($articles as $article): ?>
+            <div class="article-card">
+                <img class="article-image" src="<?= htmlspecialchars($article['photo']) ?>" alt="Photo">
+                <div class="article-content">
+                    <h1 class="article-title"><?= htmlspecialchars($article['titre']) ?></h1>
+                    <h3><?= htmlspecialchars($article['sous_titre']) ?></h3>
+                    <p class="article-meta"><strong>Par :</strong> <?= htmlspecialchars($article['auteur']) ?> - <em><?= htmlspecialchars($article['date']) ?></em></p>
+                    
+                    <a href="article.php?id=<?= $article['id'] ?>" class="article-button">Lire</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </body>
 </html>

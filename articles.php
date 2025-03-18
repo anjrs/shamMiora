@@ -20,6 +20,17 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2J62WV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Tous les articles</a></li>
+                <li><a href="auteurs.php">Auteurs</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <h1>Liste de tous les Articles</h1>
     <form method="GET">
         <label for="categorie">Catégorie:</label>
@@ -28,9 +39,9 @@
         <input type="date" id="date" name="date">
         <button type="submit">Filtrer</button>
     </form>
-    <div class="articles">
+    <div class="articles-container">
         <?php
-        $query = "SELECT a.id, a.titre, au.nom AS auteur, a.date FROM article a JOIN auteur au ON a.auteur = au.id";
+        $query = "SELECT a.id, a.titre, au.nom AS auteur, a.date FROM article a JOIN auteur au ON a.auteur_id = au.id";
         $conditions = [];
         if (!empty($_GET['categorie'])) {
             $conditions[] = "a.categorie = :categorie";
@@ -47,12 +58,15 @@
         if (!empty($_GET['date'])) $stmt->bindParam(':date', $_GET['date']);
         $stmt->execute();
         while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div class='article'>";
-            echo "<h2><a href='article.php?id={$article['id']}'>{$article['titre']}</a></h2>";
-            echo "<p>Par : {$article['auteur']} - {$article['date']}</p>";
-            echo "</div>";
-        }
-        ?>
+            echo "<div class='article-card'>";
+            echo "<h2 class='article-title'>{$article['titre']}</h2>";
+            echo "<p class='article-meta'>Par : {$article['auteur']} - {$article['date']}</p>"; ?>
+            <a href="article.php?id=<?= $article['id'] ?>" class="article-button">Lire</a>
+
+           <?php echo "</div>"; 
+
+         } ?>
+        
     </div>
 </body>
 </html>
