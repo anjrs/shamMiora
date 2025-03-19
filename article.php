@@ -48,7 +48,7 @@ if (!$article) {
             </div>
             
             <div class="donation-button">
-                <a href="donate.php" class="btn-donate" 
+                <a href="donate.html" class="btn-donate" 
                 data-donation="true" 
                 data-article-id="<?= $article['id'] ?>" 
                 data-article-title="<?= htmlspecialchars($article['titre']) ?>">
