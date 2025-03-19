@@ -56,8 +56,27 @@ if (!$article) {
             </div>
             
             <div class="donation-button">
-                <a href="donate.php" class="btn-donate">Faire un don</a>
+                <a href="donate.php" class="btn-donate" 
+                data-donation="true" 
+                data-article-id="<?= $article['id'] ?>" 
+                data-article-title="<?= htmlspecialchars($article['titre']) ?>">
+                    Faire un don
+                </a>
             </div>
+
+        <!-- Script pour envoyer un événement de suivi à Google Tag Manager -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector(".btn-donate").addEventListener("click", function() {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'donation_click',
+                        'article_id': this.getAttribute('data-article-id')
+                    });
+                });
+            });
+        </script>
+
         </article>
     </div>
 </body>
