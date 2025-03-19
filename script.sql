@@ -49,3 +49,13 @@ INSERT INTO article (titre, photo, sous_titre, chapeau, corps, auteur_id, date, 
 ('Will Smith surpris dans une altercation explosive', 'photo5.jpg', 'Le comportement inattendu de Will Smith fait scandale', 'Will Smith fait de nouveau parler de lui après une altercation qui a choqué les témoins.', 'Des témoins affirment avoir vu Will Smith s’emporter lors d’un événement privé à Los Angeles. Selon les vidéos partagées sur les réseaux sociaux, l’acteur aurait eu des mots très durs envers un producteur de renom, avant d’être calmé par des proches. Cet incident intervient après une série de polémiques qui ternissent l’image de l’acteur, autrefois adoré du grand public. Pour l’instant, son équipe de communication n’a pas souhaité réagir.', 2, '2025-03-18', 4),
 ('Appel urgent : Aidez les victimes des récentes inondations à Madagascar', 'photo6.jpg', 'Unissez-vous pour soutenir les sinistrés', 'De violentes inondations ont dévasté plusieurs régions à Madagascar, laissant des milliers de personnes sans abri.', 'Les fortes pluies qui se sont abattues sur le pays ces dernières semaines ont causé des dégâts considérables. Des villages entiers ont été submergés, forçant les habitants à fuir leurs maisons. Les organisations humanitaires se mobilisent pour fournir une assistance d’urgence, mais les besoins restent immenses : abris temporaires, nourriture, eau potable et soins médicaux. Chacun peut contribuer à alléger la souffrance des sinistrés en faisant un don. Ensemble, faisons la différence.', 1, '2025-03-18', 5),
 ('Marathon caritatif : Angelina Jolie court pour la recherche médicale', 'photo7.jpg', 'Participez à un événement solidaire', 'Angelina Jolie se mobilise pour la recherche sur les maladies rares à travers un marathon exceptionnel.', 'Angelina Jolie, connue pour son engagement humanitaire, a annoncé sa participation à un marathon caritatif destiné à collecter des fonds pour la recherche médicale. L’événement, qui aura lieu à Paris, rassemblera des milliers de participants. Chaque kilomètre parcouru contribuera à financer des projets innovants et à soutenir les familles touchées par ces maladies. L’actrice espère que cet événement incitera d’autres personnalités à se joindre à la cause.', 2, '2025-03-18', 5);
+
+
+CREATE TABLE utilisateur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL
+);
+
+-- Insertion d'un utilisateur exemple (mot de passe haché) :
+INSERT INTO utilisateur (nom, mot_de_passe) VALUES ('admin', PASSWORD('test'));
