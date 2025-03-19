@@ -47,6 +47,10 @@ if (!$article) {
             <div class="article-body">
                 <p><?= nl2br(htmlspecialchars($article['corps'])) ?></p>
             </div>
+            
+            <div class="donation-button">
+                <a href="donate.php" class="btn-donate">Faire un don</a>
+            </div>
         </article>
     </div>
 </body>
